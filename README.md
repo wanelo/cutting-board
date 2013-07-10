@@ -34,8 +34,8 @@ This will create three files,
 ```
 
 cutting-board writes out its configuration files in the root of 
-your application. In many cases, you will want to gitignore most 
-of its configuration files. It saves the local path to knife 
+your application. In many cases, you will want to gitignore its 
+main configuration file. The gem saves the local path to knife 
 configuration files, which may be different on different
 workstations (does every developer check out work projects to 
 exactly the same path? hint: no).

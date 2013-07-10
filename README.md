@@ -72,6 +72,9 @@ The mapping of capistrano roles to chef roles is done in
 `.cutting-board-mapping`. This file takes the following yml formats:
 ```yml
 capistrano_role: chef_search
+capistrano_role:
+  search: chef_search
+  attribute: ohai_attribute
 ```
 
 For example:
@@ -81,9 +84,12 @@ app_server: "role:app-server"
 queue_server: "role:sidekiq*"
 ```
 
-This can be overridden on a per-stage bases as follows:
+This can be overridden on a per-stage basis as follows:
 ```yml
 app_server: "role:app-server"
+queue_server:
+  search: "role:sidekiq*"
+  attribute: fqdn
 stages:
   admin:
     app_server: "role:admin-app-server"
@@ -95,6 +101,14 @@ stages:
 To generate the server cache, run the following command:
 ```bash
 cutting-board cache update <stage>
+```
+
+This will update `.cutting-board-cache` in the following format:
+```yml
+stage:
+  role:
+    - 10.0.0.1
+    - 10.0.0.2
 ```
 
 
